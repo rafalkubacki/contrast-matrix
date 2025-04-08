@@ -71,9 +71,22 @@ export function addLeadingHash(color: string) {
   return color.startsWith("#") ? color : `#${color}`;
 }
 
+export function expandShortHex(color: string): string {
+  if (color.length === 6) return color;
+
+  if (color.length === 3) {
+    return color[0] + color[0] + color[1] + color[1] + color[2] + color[2];
+  }
+
+  return color;
+}
+
 export function checkContrast(color1: string, color0: string) {
   color1 = removeLeadingHash(color1);
   color0 = removeLeadingHash(color0);
+
+  color1 = expandShortHex(color1);
+  color0 = expandShortHex(color0);
 
   const fMod = RGBAtoRGB(color1, color0);
   const L1 = getL(fMod);
