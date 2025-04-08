@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
 import { Box, Button, Paper, Typography } from "@mui/material";
 
 interface Props {
@@ -28,8 +28,6 @@ class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("Error caught by boundary:", error, errorInfo);
-    // In production, you could send this to an error reporting service
-    // Example: errorReportingService.report(error, errorInfo);
   }
 
   render() {
